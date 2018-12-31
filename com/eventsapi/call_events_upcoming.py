@@ -1,11 +1,9 @@
-import requests
+from libs.events.upcomingEventCaller import callUpcomingEvent
+from libs.fileSaver import save
+import json
 
-token = "2973-UtWlIhYQYGCawx"
-url = "https://api.betsapi.com/v2/events/upcoming?sport_id=1&token={}".format(token)
+jsonObj = callUpcomingEvent()
 
-res = requests.get(url)
-
-print(res.content)
-
+save(json.dumps(jsonObj), "./upcoming.json")
 
 
